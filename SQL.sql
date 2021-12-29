@@ -126,8 +126,17 @@ WHERE first_name LIKE '%a';
 29). Odczytaj imiona meskie.
 SELECT first_name, last_name FROM employees
 WHERE first_name NOT LIKE '%a';
-30). Odczytaj nazwy krajów o wieloczlonowej nazwie (np. United Kingdom).
+30). Odczytaj nazwy krajow o wieloczlonowej nazwie (np. United Kingdom).
 SELECT country_name FROM countries
 WHERE country_name LIKE '% %';
-
-;
+31). Odczytaj 10*2+5.
+SELECT 10*2+5 FROM dual;
+32). Odczytaj liczbe wszystkich pracownikow.
+SELECT count(*) FROM employees;
+33). Odczytaj liczbe wszystkich krajow.
+SELECT count(*) FROM countries; 
+34). Odczytaj liczbe osob o imieniach kobiet.
+SELECT count(*) FROM employees
+WHERE first_name LIKE '%a';
+35). Odczytaj liczbe wszystkich pracownikow, employee_id, manager_id, commision_pct. 
+SELECT count(*),count(employee_id),count(manager_id),count(commission_pct) FROM employees; 
