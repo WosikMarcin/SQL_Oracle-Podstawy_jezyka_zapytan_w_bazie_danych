@@ -139,4 +139,56 @@ SELECT count(*) FROM countries;
 SELECT count(*) FROM employees
 WHERE first_name LIKE '%a';
 35). Odczytaj liczbe wszystkich pracownikow, employee_id, manager_id, commision_pct. 
-SELECT count(*),count(employee_id),count(manager_id),count(commission_pct) FROM employees; 
+SELECT COUNT(*),COUNT(employee_id),COUNT(manager_id),COUNT(commission_pct) FROM employees; 
+36). Odczytaj job_id bez powtarzania (unikatowe dane).
+SELECT DISTINCT(job_id) FROM employees;
+37). Odczytaj last_name, commission_pct, zastap (null)-"0";
+SELECT last_name,commission_pct,NVL(commission_pct,0) FROM employees;
+38). Odczytaj srednia(pomijajac NULL za pomoca ulamka, srednia uwzgledniajac NULL
+zastapione przez zero) dla commission_pct.
+SELECT (SUM(commission_pct))/,(SUM(NVL(commission_pct,0)))/COUNT(*) FROM employees; 
+39). Odczytaj nazwisko pierwsze wg alfabetu i ostatnie wg alfabetu.
+SELECT MIN(last_name),MAX(last_name) FROM employees;
+40). Odczytaj tylko osobe najkrocej zatrudniona i najdluzej zatrudniona.
+SELECT MIN(hire_date),MAX(hire_date) FROM employees;
+41). Odczytaj minimalna i maksymalna wyplate dla wszystkich osob.
+SELECT MIN(salary),MAX(salary) FROM employees;
+42). Odczytaj minimalna i maksymalna wyplate dla tych, ktorzy maja okreslone commission_pct.
+SELECT MIN(salary),MAX(salary) FROM employees
+WHERE commission_pct IS NOT NULL;
+43). Odczytaj srednia pensje dla osob pracujacych na stanowisku IT_PROG. 
+SELECT AVG(salary) FROM employees
+WHERE job_id = 'IT_PROG'; 
+44). Sprawdz kogo jest wiecej i kto srednio lepiej zarabia kobiety czy mezczyzni.
+SELECT 'Kobiety' AS Plec,count(first_name),AVG(salary) FROM employees
+WHERE first_name LIKE '%a'
+UNION ALL
+SELECT 'Mezczyzni' AS Plec,count(first_name),AVG(salary) FROM employees
+WHERE first_name NOT LIKE '%a';
+45). Nadaj alias praca dla tabeli employees, wyswietl pracownikow, ktorzy maja wynagrodzenie 
+wieksze niz 10000, posortuj malejaco.
+SELECT first_name,last_name,salary FROM employees praca
+WHERE salary > 10000
+ORDER BY salary DESC;
+46). Odczytaj 5 najlepiej zarabijacyh osob.
+SELECT first_name,last_name,salary FROM employees
+WHERE rownum <= 5
+ORDER BY salary DESC;
+47). Odczytaj liczbe pracownikow na kazdym stanowisku.
+SELECT DISTINCT(job_id), COUNT(job_id) FROM employees
+GROUP BY job_id;
+48). Odczytaj ile osob jest w podziale na stanowisko i dzial.
+SELECT department_id,COUNT(department_id),job_id,COUNT(job_id) FROM employees
+GROUP BY job_id,department_id
+ORDER BY department_id,job_id;
+49). Odczytaj osoby na kazdym stanowisku, tylko te stanowiska gdzie pracuje mniej niz 3 osoby.
+SELECT job_id FROM employees
+HAVING count(job_id) < 3;
+
+
+
+
+
+
+
+
