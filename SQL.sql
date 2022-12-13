@@ -25,7 +25,7 @@ SELECT first_name, last_name, salary FROM employees
 ORDER BY last_name ASC, salary ASC;
 SELECT first_name, last_name, salary FROM employees 
 ORDER BY last_name , salary;
-8). Odczytaj najlepiej zarabiajaca osobê z employees.
+8). Odczytaj najlepiej zarabiajaca osobÃª z employees.
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary DESC;
 9). Odczytaj najgorzej zarabiajaca osobe z employees.
@@ -33,7 +33,7 @@ SELECT first_name, last_name, salary FROM employees
 ORDER BY salary ASC;
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary;
-10). Odczytaj najd³u¿ej zatrudniona osobe.
+10). Odczytaj najdÂ³uÂ¿ej zatrudniona osobe.
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date ASC;
 SELECT first_name, last_name, hire_date FROM employees
@@ -41,7 +41,7 @@ ORDER BY hire_date;
 11). Odczytaj ostatnio zatrudniona osobe. 
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date DESC;
-12). Odczytaj najlepiej zarabiajaca osobe na ka¿dym stanowisku.
+12). Odczytaj najlepiej zarabiajaca osobe na kaÂ¿dym stanowisku.
 SELECT first_name, last_name, job_id, salary FROM employees
 ORDER BY job_id, salary DESC;
 SELECT first_name, last_name, job_id, salary FROM employees
@@ -58,7 +58,7 @@ SELECT first_name, last_name FROM employees
 WHERE last_name  = 'King';
 SELECT first_name, last_name FROM employees
 WHERE last_name IN ('King');
-15). Odczytaj osoby, które zarabiaja pomiedzy 9 tys. a 12 tys. (w³acznie).
+15). Odczytaj osoby, ktÃ³re zarabiaja pomiedzy 9 tys. a 12 tys. (wÂ³acznie).
 SELECT first_name, last_name, salary FROM employees
 WHERE salary BETWEEN 9000 AND 12000;
 SELECT first_name, last_name, salary FROM employees
@@ -68,7 +68,7 @@ SELECT first_name, last_name, salary FROM employees
 WHERE salary = 9000 OR salary = 12000 OR salary = 24000;
 SELECT first_name, last_name, salary FROM employees
 WHERE salary IN (9000,12000,24000);
-17). Odczytaj wszystkie osoby oprocz tych zarabiajacych pomiedzy 9 tys. a 12 tys. (w³acznie)
+17). Odczytaj wszystkie osoby oprocz tych zarabiajacych pomiedzy 9 tys. a 12 tys. (wÂ³acznie)
 SELECT first_name, last_name, salary FROM employees
 WHERE salary NOT BETWEEN 9000 AND 12000;
 SELECT first_name, last_name, salary FROM employees
@@ -80,7 +80,7 @@ SELECT first_name, last_name, salary FROM employees
 WHERE salary NOT IN (9000,12000,24000);
 SELECT first_name, last_name, salary FROM employees
 WHERE salary <> 9000 AND salary <> 12000 AND salary <> 24000;
-19). Odczytaj osoby zarabiajace pomiedzy 5 tys. a 12 tys. (w³acznie).
+19). Odczytaj osoby zarabiajace pomiedzy 5 tys. a 12 tys. (wÂ³acznie).
 SELECT first_name, last_name, salary FROM employees
 WHERE salary BETWEEN 5000 AND 12000;
 SELECT first_name, last_name, salary FROM employees
@@ -90,12 +90,12 @@ SELECT first_name, last_name, salary FROM employees
 WHERE last_name = 'King' OR last_name = 'Fripp' OR last_name = 'Lee';
 SELECT first_name, last_name, salary FROM employees
 WHERE last_name IN ('King','Fripp','Lee');
-21). Odczytaj osoby o nazwisku King lub Fripp zarabiajace wiecej ni¿ 14 tys. 
+21). Odczytaj osoby o nazwisku King lub Fripp zarabiajace wiecej niÂ¿ 14 tys. 
 SELECT first_name, last_name, salary FROM employees
 WHERE last_name IN ('King','Fripp') AND salary > 14000;
 SELECT first_name,last_name,salary FROM employees
 WHERE (last_name = 'King' OR last_name = 'Fripp') AND salary > 14000; 
-22). Odczytaj osoby z dzia³ow o identyfikatorach (department_id) innych ni¿ 20,50,80.
+22). Odczytaj osoby z dziaÂ³ow o identyfikatorach (department_id) innych niÂ¿ 20,50,80.
 SELECT first_name last_name, department_id FROM employees
 WHERE department_id NOT IN (20,50,80);
 SELECT first_name,last_name,department_id FROM employees
@@ -108,7 +108,7 @@ SELECT first_name,last_name,salary,job_id FROM employees
 WHERE job_id = 'SH_CLERK' AND salary > 3000; 
 SELECT first_name,last_name,salary,job_id FROM employees
 WHERE job_id IN ('SH_CLERK') AND salary > 3000;
-24). Odczytaj osoby o pensji innej ni¿ 250,7500,10000 pracujace w dzialach 10,20,80.
+24). Odczytaj osoby o pensji innej niÂ¿ 250,7500,10000 pracujace w dzialach 10,20,80.
 SELECT first_name,last_name,salary,department_id FROM employees
 WHERE salary NOT IN (250,7500,10000) AND department_id IN (10,20,80);
 25). Odczytaj osoby o nazwiskach zaczynajacych sie na litere K.
@@ -120,7 +120,7 @@ WHERE last_name LIKE '%g';
 27). Odczytaj osoby o nazwiskach zawierajacych "in".
 SELECT first_name, last_name FROM employees
 WHERE last_name LIKE '%in%';
-28). Odczytaj osoby oimionach kobiet (koñcza sie na litere "a").
+28). Odczytaj osoby oimionach kobiet (koÃ±cza sie na litere "a").
 SELECT first_name, last_name FROM employees
 WHERE first_name LIKE '%a';
 29). Odczytaj imiona meskie.
@@ -184,7 +184,7 @@ ORDER BY department_id,job_id;
 49). Odczytaj osoby na kazdym stanowisku, tylko te stanowiska gdzie pracuje mniej niz 3 osoby.
 SELECT job_id FROM employees
 HAVING count(job_id) < 3;
-
+50).
 
 
 
