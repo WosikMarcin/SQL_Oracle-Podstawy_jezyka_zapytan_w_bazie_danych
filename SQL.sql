@@ -184,7 +184,86 @@ ORDER BY department_id,job_id;
 49). Odczytaj osoby na kazdym stanowisku, tylko te stanowiska gdzie pracuje mniej niz 3 osoby.
 SELECT job_id FROM employees
 HAVING count(job_id) < 3;
-50).
+50).Wyświetl na jakim stanowisku najbardziej opłaca sie pracować pod względem zarobków
+(gdzie średnio zarabia się nawięcej)
+SELECT job_id, AVG(salary) srednia FROM employees
+WHERE ROWNUM = 1
+GROUP BY job_id
+ORDER BY srednia DESC;
+51).Wyświetl na jakim stanowisku jest najwięcej osób zarabiających powyżej 8 tys.
+SELECT job_id, COUNT(job_id) ilosc FROM employees
+WHERE salary > 8000
+GROUP BY job_id
+ORDER BY ilosc DESC;
+52).Wyświetl różnicę pomiędzy maksymalną a minimalną wypłata dla każdego stanowsika. 
+Na jakim jest nawyższa ?   
+SELECT job_id, MAX(salary), MIN(salary), MAX(salary) - MIN(salary) roznica FROM employees
+GROUP BY job_id
+ORDER BY roznica DESC;
+53).Wyświetl liczbe wszystkich pracownikow, liczbe department_id, liczbe department_id bez powtarzania się (unikatowe dane)
+SELECT COUNT(*), COUNT(department_id), COUNT(DISTINCT(department_id)) FROM employees;
+54). Połacz tabele employees i departments (bez uzycia JOIN). 
+SELECT * FROM employees, departments
+WHERE employees.department_id = departments.department_id;
+55). Połacz tabele employees i departments (bez uzycia JOIN), nadaj alias dla employees "e"
+dla departments "d".
+SELECT * FROM employees e, departments d
+WHERE e.department_id = d.department_id;
+56). Polacz tabele employees i departments z uzyciem JOIN, nadaj alias "e" dla employees,
+"d" dla departments.
+SELECT * FROM employees e JOIN departments d
+ON e.department_id = d.department_id;
+57). Polacz tabele employees i departments z uzyciem LEFT JOIN, nadaj alias "e" dla employees, "d" dla departments.
+SELECT * FROM employees e LEFT JOIN departments d
+ON e.department_id = d.department_id;
+58). Polacz tabele employees i departments z uzyciem FULL JOIN, nadaj alias "e" dla employees, "d" dla departments. 
+SELECT * FROM employees e FULL JOIN departments d 
+ON e.department_id = d.department_id;
+59). Polacz tabele employees i departments z uzyciem RIGHT JOIN, nadaj alias "e" dla employees, "d" dla departments.
+SELECT * FROM employees e RIGHT JOIN departments d 
+ON e.department_id = d.department_id;
+60). Polacz tabele employees, departments i locations z uzyciem JOIN, odczytaj last_name, department_name i city, nadaj alias "e" 
+dla employees "d" dla departments "l" dla locations.
+SELECT e.last_name, d.department_name, l.city FROM employees e JOIN departments d
+ON e.department_id = d.department_id JOIN locations l
+ON d.location_id = l.location_id;
+61).Zakladajac, ze kolumna "salary" to pensja miesieczna wyswietl imie, nazwisko i stawke godzinowa.
+SELECT first_name, last_name, salary, salary/160 AS stawka_godzinowa FROM employees;
+62).W tabeli "JOBS" znajdz kody stanowisk majacych "Manager" w nazwie.
+SELECT job_title FROM jobs
+WHERE job_title LIKE '%Manager%';
+63). Wyswietl osoby pracujace na stanowiskach o kodach znalezionych w punkcie 62.
+SELECT first_name, last_name, job_title FROM jobs j LEFT JOIN employees e
+ON j.job_id = e.job_id
+WHERE job_title LIKE '%Manager%';
+64). Policz ile bezposrednio podwladnych ma kazdy Manager (pogrupuj po kolumnie manager_id).
+SELECT manager_id, COUNT(manager_id) FROM employees
+GROUP BY manager_id;
+65). Wyswietl nazwisko pracownika i nazwe stanowiska na którym pracuje (połącz tabele employees i jobs).
+SELECT e.last_name, j.job_title FROM jobs j LEFT JOIN employees e
+ON j.job_id = e.job_id;
+66). Wyswietl tylko te osoby, ktore nie zarobia wiecej na swoim stanowisku (ich pensja = max dla stanowiska)
+SELECT first_name, last_name, salary, max_salary FROM employees e JOIN jobs j
+ON e.job_id = j.job_id
+WHERE e.salary = j.max_salary;
+67) Wyswietl nazwisko i miasto, w ktorym pracuja osoby.
+SELECT last_name, city FROM employees e JOIN departments d
+ON e.department_id = d.department_id
+JOIN locations l ON d.location_id = l.location_id; 
+68). Wyswietl miasto i kraj, w ktorym pracuja osoby.
+SELECT city, country_name FROM locations l JOIN countries c
+ON l.country_id = c.country_id;
+69). Wyswietl nazwisko i nazwe kraju, w ktorym pracuje pracownik.
+SELECT last_name, country_name FROM employees e 
+JOIN departments d ON e.department_id = d.department_id 
+JOIN locations l ON d.location_id = l.location_id 
+JOIN countries c ON l.country_id = c.country_id; 
+70). Wyswietl osoby zarabiajace powyzej sredniej.
+SELECT first_name, last_name, salary FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+
+
 
 
 
