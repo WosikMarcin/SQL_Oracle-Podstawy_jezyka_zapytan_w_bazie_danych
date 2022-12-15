@@ -261,6 +261,36 @@ JOIN countries c ON l.country_id = c.country_id;
 70). Wyswietl osoby zarabiajace powyzej sredniej.
 SELECT first_name, last_name, salary FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);
+71). Wyswietl osoby zarabiajace najmniej (osoba o najnizszej pensji). 
+SELECT first_name, last_name, salary FROM employees
+WHERE salary = (SELECT MIN(salary) FROM employees);
+72). Wyswietl nazwisko, pensje i maksymalna pensje dla wszystkich pracownikow. 
+SELECT last_name, salary, (SELECT MAX(salary) FROM employees) FROM employees;
+73). Wyswietl pensje netto, pensje brutto. Uzyj podzapytania w sekcji FROM.
+SELECT salary AS "pensja netto", (salary * 1.2) AS "pensja brutto" FROM employees;
+74). Wyswietl osobę zarabiajaca najwiecej. 
+SELECT first_name, last_name FROM employees
+WHERE salary = (SELECT MAX(salary) FROM employees);
+75). Wyswietl osoby, ktore sa przelozonymi innych osob (Wartosc ich employee_id jest wpisana w kolumnie manager_id). 
+SELECT first_name, last_name FROM employees
+WHERE employee_id IN (SELECT manager_id FROM employees);
+76). Wyswietl osoby, ktore nie posiadaja podwładnych.
+SELECT first_name, last_name FROM employees
+WHERE employee_id NOT IN (SELECT manager_id FROM employees WHERE manager_id IS NOT NULL);
+78). Wyswietl osoby zarabiajce ponizej sredniej
+SELECT first_name, last_name, salary, ROUND((SELECT AVG(salary) FROM employees),2) AS srednia_zarobkow FROM employees
+WHERE salary < (SELECT AVG(salary) FROM employees);
+79). Wyswietl osoby zarabiajace powyzej 200% sredniej.
+SELECT first_name, last_name, salary, ROUND((SELECt AVG(salary) FROM employees),2) AS srednia_zarobkow FROM employees
+WHERE salary > (SELECt AVG(salary) FROM employees)*2;
+80).Wyswietl tylko najdluzej pracujaca osobe.
+SELECT first_name, last_name, hire_date FROM employees
+WHERE hire_date = (SELECT MIN(hire_date) FROM employees);
+
+
+
+
+
 
 
 
