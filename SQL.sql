@@ -340,12 +340,21 @@ WHERE last_name = 'King';
 95). Wyswietl osoby o nazwisku King, uzyj funkcji"UPPER".
 SELECT first_name, UPPER(last_name) FROM employees
 WHERE last_name = 'King';
+96). Dla wyrazenia "ala ma kota" usun białe znaki z obu stron, z lewej strony, z prawej strony.
+SELECT ' ala ma kota ', TRIM(' ala ma kota '), LTRIM(' ala ma kota '), RTRIM( 'ala ma kota ') FROM DUAL;
 
+SELECT k1, TRIM(k1), LTRIM(k1), RTRIM(k1) FROM (SELECT ' ala ma kota ' AS k1 FROM DUAL);
+97). Wyswietl napis w formacie job_title (min salary :max salary).
+SELECT job_title||'('||min_salary||':'||max_salary||')' FROM jobs;
+98). Wyswietl napisz w formacie job_title : last_name, np.President : King
+SELECT job_title||' : '||last_name FROM employees e JOIN jobs j
+ON e.job_id = j.job_id;
+99). Z napisu "Ala ma kota" wytnij "kot". (zaczynajac od poczatku i od konca).
+SELECT SUBSTR('ala ma kota',8,3), SUBSTR('ala ma kota',-4,3) FROM DUAL;
 
-
-
-
-
+SELECT SUBSTR(k1,8,3), SUBSTR(k1,-4,3) FROM (SELECT 'ala ma kota' AS k1 FROM DUAL);
+100). Wyswietl imie, nazwisko i inicjaly w formacie P.S.
+SELECT first_name, last_name, SUBSTR(first_name,1,1)||'.'||SUBSTR(last_name,1,1)||'.' as inicjaly FROM employees;
 
 
 
