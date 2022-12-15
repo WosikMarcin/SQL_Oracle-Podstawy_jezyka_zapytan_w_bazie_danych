@@ -286,6 +286,93 @@ WHERE salary > (SELECt AVG(salary) FROM employees)*2;
 80).Wyswietl tylko najdluzej pracujaca osobe.
 SELECT first_name, last_name, hire_date FROM employees
 WHERE hire_date = (SELECT MIN(hire_date) FROM employees);
+81). Wyswietl jednoczesnie najlepiej i najgorzej zarabiajce osoby.
+SELECT first_name, last_name, salary FROM employees
+WHERE salary = (SELECT MAX(salary) FROM employees)
+UNION ALL
+SELECT first_name, last_name, salary FROM employees
+WHERE salary = (SELECT MIN(salary) FROM employees);
+
+SELECT first_name, last_name, salary FROM employees
+WHERE salary = (SELECT MAX(salary) FROM employees) OR
+salary = (SELECT MIN(salary) FROM employees);
+82). Znajdz najwyzsza pensje kobiety.
+SELECT MAX(salary) FROM employees 
+WHERE first_name LIKE '%a';
+
+SELECT first_name, last_name, salary FROM (SELECT * FROM employees WHERE first_name LIKE '%a')
+WHERE ROWNUM =1
+ORDER BY salary DESC;
+84).Wyswietl osoby pracujace na stanowiskach "ACCOUNTANT".
+SELECT first_name, last_name, job_title FROM employees e JOIN jobs j
+ON e.job_id = j.job_id WHERE job_title = 'Accountant';
+85).Wyswietl osoby pracujace w Londynie.
+SELECT first_name, last_name, city FROM employees e 
+JOIN departments d ON e.department_id = d.department_id 
+JOIN locations l ON d.location_id = l.location_id
+WHERE l.city  = 'London';
+88).Wyswietl imie, pensja i maksimum zarobkow dla wszystkich.
+SELECT first_name, salary, (SELECT MAX(salary) FROM employees) FROM employees;
+89).Wyswietl imie, pensja, stanowisko i maksimum zarobkow dla wszystkich.
+SELECT first_name, salary, job_title, (SELECT MAX(salary) FROM employees) FROM employees e
+JOIN jobs j ON e.job_id = j.job_id;
+91). Liczbę 12345.6789
+- zaokraglij (zero miejsc po przecinku)
+- zaokraglij do dwoch miejsc po przecinku
+- zaokraglij do dwoch miejsc przed przecinkiem
+- utnij liczby po przecinku, wyswietl tylko liczbe do przecinka
+- utnij do dwoch miejsc po przecinku
+- utnij do dwoch miejsc przed przecinkiem
+- zaokraglij w gore
+- zaokraglij w dol
+
+SELECT 12345.6789, ROUND(12345.6789), ROUND(12345.6789,2), ROUND(12345.6789,-2),
+TRUNC(12345.6789), TRUNC(12345.6789,2), TRUNC(12345.6789,-2), CEIL(12345.6789), FLOOR(12345.6789) FROM DUAL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
