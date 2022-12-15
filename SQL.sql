@@ -328,10 +328,18 @@ JOIN jobs j ON e.job_id = j.job_id;
 
 SELECT 12345.6789, ROUND(12345.6789), ROUND(12345.6789,2), ROUND(12345.6789,-2),
 TRUNC(12345.6789), TRUNC(12345.6789,2), TRUNC(12345.6789,-2), CEIL(12345.6789), FLOOR(12345.6789) FROM DUAL;
+92). Wyswietl min, max i srednia pensje dla wszystkich praconikow - zaokraglij do dwoch miejsc po przecinku.
+SELECT MIN(salary), MAX(salary), ROUND(AVG(salary),2) FROM employees;
+93).Wyswietl "ala ma kota" z wszystkich duzych liter, z wszystkich malych, pierwsza litera slowa wielka a reszta mała.
+SELECT UPPER('ala ma kota'), LOWER('ala ma kota'),INITCAP('ala ma kota') FROM DUAL;
 
-
-
-
+SELECT UPPER(k1), LOWER(k1), INITCAP(k1) FROM (SELECT ('ala ma kota') AS k1 FROM DUAL); 
+94).Wyswietl osoby o nazwisku King, uzyj funkcji "LOWER".
+SELECT first_name, LOWER(last_name) FROM employees
+WHERE last_name = 'King';
+95). Wyswietl osoby o nazwisku King, uzyj funkcji"UPPER".
+SELECT first_name, UPPER(last_name) FROM employees
+WHERE last_name = 'King';
 
 
 
