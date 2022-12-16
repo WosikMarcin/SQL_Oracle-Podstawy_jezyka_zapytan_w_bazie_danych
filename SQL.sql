@@ -355,16 +355,38 @@ SELECT SUBSTR('ala ma kota',8,3), SUBSTR('ala ma kota',-4,3) FROM DUAL;
 SELECT SUBSTR(k1,8,3), SUBSTR(k1,-4,3) FROM (SELECT 'ala ma kota' AS k1 FROM DUAL);
 100). Wyswietl imie, nazwisko i inicjaly w formacie P.S.
 SELECT first_name, last_name, SUBSTR(first_name,1,1)||'.'||SUBSTR(last_name,1,1)||'.' as inicjaly FROM employees;
+101).Wyswietl first_name, dlugosc first_name i pozycje "a" w first_name.
+SELECT first_name, LENGTH(first_name), INSTR(first_name,'a') FROM employees;
+102). Utworz widok "pracownicy". Polacz first_name z last_name i nadaj alias pracownik.
+Wyswietl dane w formacie pracownik, mejsce spacji, imie, nazwisko.
+CREATE VIEW pracownicy AS SELECT first_name||' '||last_name AS pracownik FROM employees;
+SELECT pracownik, INSTR(pracownik,' ') AS "Miejsce spacji", SUBSTR(pracownik,1,INSTR(pracownik,' ')-1) AS imie, 
+SUBSTR(pracownik,INSTR(pracownik,' ')+1,LENGTH(pracownik)) AS nazwisko FROM pracownicy;
+103). W "Ala ma Kota" zamień: "Ala" na "Tomek", "Kot" na "Ps", "a" na "*".
+SELECT REPLACE('Ala ma Kota','Ala','Tomek'), REPLACE('Ala ma Kota','Kot','Ps'), REPLACE('Ala ma Kota','a','*') FROM DUAL;
 
-
-
-
-
-
-
-
-
-
+SELECT k1,REPLACE(k1,'Ala','Tomek'), REPLACE(k1,'Kot','Ps'), REPLACE(k1,'a','*') FROM (SELECT 'Ala ma Kota' AS k1 FROM DUAL);
+104). Wyswietl dzisiejsza datę.
+SELECT SYSDATE FROM DUAL;
+105).Wyswietl dzisiejsza date w formacie rok-miesiac-dzien, 
+godzine w formacie godzina:minuta:sekunda, ktory dzien tygodnia dzien miesiaca dzien roku(nazwa dnia krotka i pelna), ktory dzis miesiac.
+SELECT to_char(SYSDATE,'yyyy-mm-dd'), to_char(SYSDATE,'hh24:mi:ss'), to_char(SYSDATE,'d dd ddd dy day month') FROM DUAL;
+106).Wprowadz swoja date urodzenia. Policz ile masz lat.
+SELECT to_char(SYSDATE,'yyyy')-2000 FROM DUAL;
+108).Dla kazdego pracownika wyswietl nazwisko, date zatrudnienia i obliczony staz pracy latach.
+SELECT last_name, hire_date, to_char(SYSDATE,'yyyy')- to_char(hire_date,'yyyy') AS staz FROM employees; 
+110).Ile osob jest na kazdym stanowisku? Tylko te stanowiska, gdzie pracuje mniej niz 3 osoby.
+SELECT COUNT(job_id), job_id FROM employees
+GROUP BY job_id
+HAVING COUNT(job_id) < 3;
+113). Wyswietl first_name,przy kazdym first_name okresl czy to jest PAN czy PANI. Uzyj funkcji CASE.
+Nadaj alias "plec" dla okreslenia czy to PAN czy PANI.
+SELECT first_name,
+CASE 
+WHEN first_name LIKE '%a' OR first_name IN ('Ellen','Shelli','Elizabeth') THEN 'PANI'
+ELSE 'PAN'
+END AS plec
+FROM employees;
 
 
 
