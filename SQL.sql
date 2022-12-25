@@ -171,9 +171,11 @@ SELECT first_name,last_name,salary FROM employees praca
 WHERE salary > 10000
 ORDER BY salary DESC;
 46). Odczytaj 5 najlepiej zarabijacyh osob.
-SELECT first_name,last_name,salary FROM employees
-WHERE rownum <= 5
+SELECT first_name, last_name, salary FROM employees
 ORDER BY salary DESC;
+
+SELECT first_name, last_name, salary FROM (SELECT * FROM employees ORDER BY salary DESC)
+WHERE ROWNUM = 1;
 47). Odczytaj liczbe pracownikow na kazdym stanowisku.
 SELECT DISTINCT(job_id), COUNT(job_id) FROM employees
 GROUP BY job_id;
