@@ -175,7 +175,7 @@ SELECT first_name, last_name, salary FROM employees
 ORDER BY salary DESC;
 
 SELECT first_name, last_name, salary FROM (SELECT * FROM employees ORDER BY salary DESC)
-WHERE ROWNUM = 1;
+WHERE ROWNUM <= 5;
 47). Odczytaj liczbe pracownikow na kazdym stanowisku.
 SELECT DISTINCT(job_id), COUNT(job_id) FROM employees
 GROUP BY job_id;
