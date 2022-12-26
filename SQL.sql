@@ -185,7 +185,8 @@ GROUP BY job_id,department_id
 ORDER BY department_id,job_id;
 49). Odczytaj osoby na kazdym stanowisku, tylko te stanowiska gdzie pracuje mniej niz 3 osoby.
 SELECT job_id FROM employees
-HAVING count(job_id) < 3;
+GROUP BY job_id
+HAVING COUNT(job_id) < 3;
 50).Wyświetl na jakim stanowisku najbardziej opłaca sie pracować pod względem zarobków
 (gdzie średnio zarabia się nawięcej)
 SELECT job_id, AVG(salary) srednia FROM employees
