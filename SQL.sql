@@ -189,9 +189,11 @@ HAVING count(job_id) < 3;
 50).Wyświetl na jakim stanowisku najbardziej opłaca sie pracować pod względem zarobków
 (gdzie średnio zarabia się nawięcej)
 SELECT job_id, AVG(salary) srednia FROM employees
-WHERE ROWNUM = 1
 GROUP BY job_id
 ORDER BY srednia DESC;
+
+SELECT * FROM (SELECT job_id, AVG(salary) FROM employees GROUP BY job_id ORDER BY AVG(salary) DESC)
+WHERE ROWNUM = 1;
 51).Wyświetl na jakim stanowisku jest najwięcej osób zarabiających powyżej 8 tys.
 SELECT job_id, COUNT(job_id) ilosc FROM employees
 WHERE salary > 8000
