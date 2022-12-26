@@ -197,11 +197,18 @@ SELECT job_id, COUNT(job_id) ilosc FROM employees
 WHERE salary > 8000
 GROUP BY job_id
 ORDER BY ilosc DESC;
+
+SELECT * FROM
+(SELECT COUNT(job_id), job_id FROM employees WHERE salary > 8000 GROUP BY job_id ORDER BY COUNT(job_id) DESC) 
+WHERE ROWNUM = 1;
 52).Wyświetl różnicę pomiędzy maksymalną a minimalną wypłata dla każdego stanowsika. 
 Na jakim jest nawyższa ?   
 SELECT job_id, MAX(salary), MIN(salary), MAX(salary) - MIN(salary) roznica FROM employees
 GROUP BY job_id
 ORDER BY roznica DESC;
+
+SELECT * FROM (SELECT job_id, MAX(salary), MIN(salary), MAX(salary)-MIN(salary) AS roznica FROM employees GROUP BY job_id ORDER BY roznica DESC)
+WHERE ROWNUM = 1;
 53).Wyświetl liczbe wszystkich pracownikow, liczbe department_id, liczbe department_id bez powtarzania się (unikatowe dane)
 SELECT COUNT(*), COUNT(department_id), COUNT(DISTINCT(department_id)) FROM employees;
 54). Połacz tabele employees i departments (bez uzycia JOIN). 
