@@ -346,10 +346,10 @@ SELECT MIN(salary), MAX(salary), ROUND(AVG(salary),2) FROM employees;
 SELECT UPPER('ala ma kota'), LOWER('ala ma kota'),INITCAP('ala ma kota') FROM DUAL;
 
 SELECT UPPER(k1), LOWER(k1), INITCAP(k1) FROM (SELECT ('ala ma kota') AS k1 FROM DUAL); 
-94).Wyswietl osoby o nazwisku King, uzyj funkcji "LOWER".
+94).Wyswietl osoby o nazwisku King, wszystkie małe litery.
 SELECT first_name, LOWER(last_name) FROM employees
 WHERE last_name = 'King';
-95). Wyswietl osoby o nazwisku King, uzyj funkcji"UPPER".
+95). Wyswietl osoby o nazwisku King, wszystkie duże litery.
 SELECT first_name, UPPER(last_name) FROM employees
 WHERE last_name = 'King';
 96). Dla wyrazenia "ala ma kota" usun białe znaki z obu stron, z lewej strony, z prawej strony.
