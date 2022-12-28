@@ -352,8 +352,8 @@ WHERE last_name = 'King';
 95). Wyswietl osoby o nazwisku King, wszystkie duże litery.
 SELECT first_name, UPPER(last_name) FROM employees
 WHERE last_name = 'King';
-96). Dla wyrazenia "ala ma kota" usun białe znaki z obu stron, z lewej strony, z prawej strony.
-SELECT ' ala ma kota ', TRIM(' ala ma kota '), LTRIM(' ala ma kota '), RTRIM( 'ala ma kota ') FROM DUAL;
+96). Dla wyrazenia ' ala ma kota ' usun białe znaki z obu stron, z lewej strony, z prawej strony.
+SELECT ' ala ma kota ', TRIM(' ala ma kota '), LTRIM(' ala ma kota '), RTRIM( ' ala ma kota ') FROM DUAL;
 
 SELECT k1, TRIM(k1), LTRIM(k1), RTRIM(k1) FROM (SELECT ' ala ma kota ' AS k1 FROM DUAL);
 97). Wyswietl napis w formacie job_title (min salary :max salary).
