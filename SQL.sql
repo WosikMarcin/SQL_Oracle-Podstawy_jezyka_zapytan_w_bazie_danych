@@ -399,7 +399,8 @@ WHEN first_name LIKE '%a' OR first_name IN ('Ellen','Shelli','Elizabeth') THEN '
 ELSE 'PAN'
 END AS plec
 FROM employees;
-
+114). Wyświetl Hello World
+SELECT 'Hello World' FROM DUAL;
 
 
 
