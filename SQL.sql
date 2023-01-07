@@ -9,7 +9,7 @@ SELECT first_name, last_name, salary FROM employees;
 SELECT first_name AS imie, salary AS pensja_pracownika FROM employees;
 SELECT first_name AS "imie", salary AS "pensja_pracownika" FROM employees;
 SELECT first_name imie, salary pensja_pracownika FROM employees;
-SELECT first_name "Imie", salary "Pensja pracownika" FROM employees;
+SELECT first_name "imie", salary "pensja pracownika" FROM employees;
 4). Nadaj alias pracownicy dla tabeli employees, odczytaj first_name, last_name z employees.
 SELECT pracownicy.first_name, pracownicy.last_name FROM employees pracownicy;
 5). Odczytaj first_name, salary z employees, posortuj rosnaco ( po salary ).
