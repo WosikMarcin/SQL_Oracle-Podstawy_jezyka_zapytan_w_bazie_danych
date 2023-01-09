@@ -2,19 +2,24 @@ Do pracy z SQL w bazie danych Oracle uzywam Oracle SQL Developer - schemat HR.
 
 1). Odczytaj wszystkie kolumny z schematu HR z tabeli employees.
 SELECT * FROM employees;
+
 SELECT * FROM hr.employees;
 2). Odczytaj first_name, last_name i salary z tabeli employees;
 SELECT first_name, last_name, salary FROM employees;
 3). Nadaj alias imie dla first_name i pensja pracownika dla salary, odczytaj first_name i salary z employees.
 SELECT first_name AS imie, salary AS pensja_pracownika FROM employees;
+
 SELECT first_name AS "imie", salary AS "pensja_pracownika" FROM employees;
+
 SELECT first_name imie, salary pensja_pracownika FROM employees;
+
 SELECT first_name "imie", salary "pensja_pracownika" FROM employees;
 4). Nadaj alias pracownicy dla tabeli employees, odczytaj first_name, last_name z employees.
 SELECT pracownicy.first_name, pracownicy.last_name FROM employees pracownicy;
 5). Odczytaj first_name, salary z employees, posortuj rosnaco ( po salary ).
 SELECT first_name, salary FROM employees  
 ORDER BY salary ASC;
+
 SELECT first_name, salary FROM employees  
 ORDER BY salary;
 6). Odczytaj first_name, salary z employees, posortuj malejaco ( po salary ).
@@ -23,6 +28,7 @@ ORDER BY salary DESC;
 7). Odczytaj first_name, last_name, salary z employees posortuj rosnaco po last_name, rosnaco po salary.
 SELECT first_name, last_name, salary FROM employees 
 ORDER BY last_name ASC, salary ASC;
+
 SELECT first_name, last_name, salary FROM employees 
 ORDER BY last_name , salary;
 8). Odczytaj najlepiej zarabiajaca osobê z employees.
@@ -31,11 +37,13 @@ ORDER BY salary DESC;
 9). Odczytaj najgorzej zarabiajaca osobe z employees.
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary ASC;
+
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary;
 10). Odczytaj najd³u¿ej zatrudniona osobe.
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date ASC;
+
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date;
 11). Odczytaj ostatnio zatrudniona osobe. 
@@ -44,28 +52,34 @@ ORDER BY hire_date DESC;
 12). Odczytaj najlepiej zarabiajaca osobe na ka¿dym stanowisku.
 SELECT first_name, last_name, job_id, salary FROM employees
 ORDER BY job_id, salary DESC;
+
 SELECT first_name, last_name, job_id, salary FROM employees
 ORDER BY job_id ASC, salary DESC;
 13). Odczytaj osobe zarabiajaca 12 tys. z employees.
 SELECT first_name, last_name, salary FROM employees
 WHERE salary = 12000;
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary IN (12000);
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary BETWEEN 12000 AND 12000;
 14). Odczytaj osobe o nazwisku King.
 SELECT first_name, last_name FROM employees
 WHERE last_name  = 'King';
+
 SELECT first_name, last_name FROM employees
 WHERE last_name IN ('King');
 15). Odczytaj osoby, które zarabiaja pomiedzy 9 tys. a 12 tys. (w³acznie).
 SELECT first_name, last_name, salary FROM employees
 WHERE salary BETWEEN 9000 AND 12000;
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary >= 9000 AND salary <= 12000;
 16). Odczytaj osoby zarabiajace 9 tys. lub 12 tys. lub 24 tys.
 SELECT first_name, last_name, salary FROM employees
 WHERE salary = 9000 OR salary = 12000 OR salary = 24000;
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary IN (9000,12000,24000);
 17). Odczytaj wszystkie osoby oprocz tych zarabiajacych pomiedzy 9 tys. a 12 tys. (w³acznie)
