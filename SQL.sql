@@ -76,6 +76,9 @@ WHERE salary BETWEEN 9000 AND 12000;
 
 SELECT first_name, last_name, salary FROM employees
 WHERE salary >= 9000 AND salary <= 12000;
+
+SELECT first_name, last_name, salary FROM employees
+WHERE NOT (salary < 9000 OR salary > 12000); 
 16). Odczytaj osoby zarabiajace 9 tys. lub 12 tys. lub 24 tys.
 SELECT first_name, last_name, salary FROM employees
 WHERE salary = 9000 OR salary = 12000 OR salary = 24000;
