@@ -88,24 +88,29 @@ WHERE salary IN (9000,12000,24000);
 17). Odczytaj wszystkie osoby oprocz tych zarabiajacych pomiedzy 9 tys. a 12 tys. (w³acznie)
 SELECT first_name, last_name, salary FROM employees
 WHERE salary NOT BETWEEN 9000 AND 12000;
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary < 9000 OR salary > 12000;
+
 SELECT first_name, last_name, salary FROM employees
 WHERE NOT (salary >= 9000 AND salary <= 12000);
 18). Odczytaj osoby oprocz tych zarabiajacych 9 tys. lub 12 tys. lub 24 tys.
 SELECT first_name, last_name, salary FROM employees
 WHERE salary NOT IN (9000,12000,24000);
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary <> 9000 AND salary <> 12000 AND salary <> 24000;
 19). Odczytaj osoby zarabiajace pomiedzy 5 tys. a 12 tys. (w³acznie).
 SELECT first_name, last_name, salary FROM employees
 WHERE salary BETWEEN 5000 AND 12000;
+
 SELECT first_name, last_name, salary FROM employees
 WHERE salary >= 5000 AND salary <= 12000;
 20). Odczytaj osoby o nazwiskach King, Fripp, Lee. 
-SELECT first_name, last_name, salary FROM employees
+SELECT first_name, last_name FROM employees
 WHERE last_name = 'King' OR last_name = 'Fripp' OR last_name = 'Lee';
-SELECT first_name, last_name, salary FROM employees
+
+SELECT first_name, last_name FROM employees
 WHERE last_name IN ('King','Fripp','Lee');
 21). Odczytaj osoby o nazwisku King lub Fripp zarabiajace wiecej ni¿ 14 tys. 
 SELECT first_name, last_name, salary FROM employees
