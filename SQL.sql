@@ -1,12 +1,17 @@
-Do pracy z SQL w bazie danych Oracle uzywam Oracle SQL Developer - schemat HR.
+Do pracy z SQL w bazie danych Oracle uzywam Oracle SQL Developer - schemat HR ( wykonaj na 2 sposoby ).
 
 1). Odczytaj wszystkie kolumny z schematu HR z tabeli employees.
+
 SELECT * FROM employees;
 
 SELECT * FROM hr.employees;
+
 2). Odczytaj first_name, last_name i salary z tabeli employees;
+
 SELECT first_name, last_name, salary FROM employees;
-3). Nadaj alias imie dla first_name i pensja pracownika dla salary, odczytaj first_name i salary z employees.
+
+3). Nadaj alias imie dla first_name i pensja pracownika dla salary, odczytaj first_name i salary z employees ( wykonaj na 4 sposoby ).
+
 SELECT first_name AS imie, salary AS pensja_pracownika FROM employees;
 
 SELECT first_name AS "imie", salary AS "pensja_pracownika" FROM employees;
@@ -14,38 +19,55 @@ SELECT first_name AS "imie", salary AS "pensja_pracownika" FROM employees;
 SELECT first_name imie, salary pensja_pracownika FROM employees;
 
 SELECT first_name "imie", salary "pensja_pracownika" FROM employees;
-4). Nadaj alias pracownicy dla tabeli employees, odczytaj first_name, last_name z employees.
+
+4). Nadaj alias pracownicy dla tabeli employees, odczytaj first_name, last_name z employees ( wykonaj na 2 sposoby ).
+
 SELECT pracownicy.first_name, pracownicy.last_name FROM employees pracownicy;
-5). Odczytaj first_name, salary z employees, posortuj rosnaco ( po salary ).
+
+SELECT first_name, last_name FROM employees pracownicy;
+
+5). Odczytaj first_name, salary z employees, posortuj rosnaco ( po salary ) ( wykonaj na 2 sposoby ).
+
 SELECT first_name, salary FROM employees  
 ORDER BY salary ASC;
 
 SELECT first_name, salary FROM employees  
 ORDER BY salary;
+
 6). Odczytaj first_name, salary z employees, posortuj malejaco ( po salary ).
+
 SELECT first_name, salary FROM employees 
 ORDER BY salary DESC;
-7). Odczytaj first_name, last_name, salary z employees posortuj rosnaco po last_name, rosnaco po salary.
+
+7). Odczytaj first_name, last_name, salary z employees posortuj rosnaco po last_name, rosnaco po salary ( wykonaj na 2 sposoby ).
+
 SELECT first_name, last_name, salary FROM employees 
 ORDER BY last_name ASC, salary ASC;
 
 SELECT first_name, last_name, salary FROM employees 
 ORDER BY last_name , salary;
+
 8). Odczytaj najlepiej zarabiajaca osobê z employees.
+
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary DESC;
-9). Odczytaj najgorzej zarabiajaca osobe z employees.
+
+9). Odczytaj najgorzej zarabiajaca osobe z employees ( wykonaj na 2 sposoby ).
+
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary ASC;
 
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary;
-10). Odczytaj najd³u¿ej zatrudniona osobe.
+
+10). Odczytaj najd³u¿ej zatrudniona osobe ( wykonaj na 2 sposoby ).
+
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date ASC;
 
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date;
+
 11). Odczytaj ostatnio zatrudniona osobe. 
 SELECT first_name, last_name, hire_date FROM employees
 ORDER BY hire_date DESC;
