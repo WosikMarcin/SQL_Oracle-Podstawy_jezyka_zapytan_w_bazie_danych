@@ -155,7 +155,7 @@ WHERE salary >= 5000 AND salary <= 12000;
 SELECT first_name, last_name, salary FROM employees
 WHERE NOT (salary < 5000 OR salary > 12000);
 
-20). Odczytaj osoby o nazwiskach King, Fripp, Lee. ( wykonaj na 3 sposoby )
+20). Odczytaj osoby o nazwiskach King, Fripp, Lee. ( wykonaj na 4 sposoby )
 
 SELECT first_name, last_name FROM employees
 WHERE last_name = 'King' OR last_name = 'Fripp' OR last_name = 'Lee';
