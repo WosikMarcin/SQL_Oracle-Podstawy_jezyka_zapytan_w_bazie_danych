@@ -169,52 +169,78 @@ WHERE NOT (last_name <> 'King' AND last_name <> 'Fripp' AND last_name <> 'Lee');
 SELECT first_name, last_name FROM employees
 WHERE NOT (last_name != 'King' AND last_name != 'Fripp' AND last_name != 'Lee');
 
-21). Odczytaj osoby o nazwisku King lub Fripp zarabiajace wiecej ni¿ 14 tys.
+21). Odczytaj osoby o nazwisku King lub Fripp zarabiajace wiecej niz 14 tys.
 
 SELECT first_name, last_name, salary FROM employees
 WHERE last_name IN ('King','Fripp') AND salary > 14000;
 
-SELECT first_name,last_name,salary FROM employees
+SELECT first_name, last_name, salary FROM employees
 WHERE (last_name = 'King' OR last_name = 'Fripp') AND salary > 14000; 
 
-22). Odczytaj osoby z dzia³ow o identyfikatorach (department_id) innych ni¿ 20,50,80.
+22). Odczytaj osoby z dzialow o identyfikatorach (department_id) innych niz 20,50,80. ( wykonaj na 4 sposoby )
 
-SELECT first_name last_name, department_id FROM employees
+SELECT first_name, last_name, department_id FROM employees
 WHERE department_id NOT IN (20,50,80);
 
-SELECT first_name,last_name,department_id FROM employees
+SELECT first_name, last_name, department_id FROM employees
 WHERE department_id <> 20 AND department_id <> 50 AND department_id <> 80;
 
-SELECT first_name,last_name,department_id FROM employees
+SELECT first_name, last_name, department_id FROM employees
+WHERE department_id != 20 AND department_id != 50 AND department_id != 80;
+
+SELECT first_name, last_name, department_id FROM employees
 WHERE NOT (department_id = 20 OR department_id = 50 OR department_id = 80);
 
 23). Odczytaj osoby pracujace na stanowiskach (job_id) SH_CLERK i zarabiajace wiecej niz
-3 tys.
-SELECT first_name,last_name,salary,job_id FROM employees
+3 tys. ( wykonaj na 4 sposoby )
+
+SELECT first_name, last_name, salary, job_id FROM employees
 WHERE job_id = 'SH_CLERK' AND salary > 3000; 
-SELECT first_name,last_name,salary,job_id FROM employees
+
+SELECT first_name, last_name, salary, job_id FROM employees
 WHERE job_id IN ('SH_CLERK') AND salary > 3000;
+
+SELECT first_name, last_name, job_id, salary FROM employees
+WHERE NOT job_id <> 'SH_CLERK' AND NOT salary <= 3000;
+
+SELECT first_name, last_name, job_id, salary FROM employees
+WHERE NOT job_id != 'SH_CLERK' AND NOT salary <= 3000;
+
 24). Odczytaj osoby o pensji innej ni¿ 250,7500,10000 pracujace w dzialach 10,20,80.
-SELECT first_name,last_name,salary,department_id FROM employees
+
+SELECT first_name, last_name, salary, department_id FROM employees
 WHERE salary NOT IN (250,7500,10000) AND department_id IN (10,20,80);
+
 25). Odczytaj osoby o nazwiskach zaczynajacych sie na litere K.
-SELECT first_name,last_name,salary FROM employees
+
+SELECT first_name, last_name, salary FROM employees
 WHERE last_name LIKE 'K%';
+
 26). Odczytaj osoby o nazwiskach zakonczonych na litere g.
+
 SELECT first_name, last_name FROM employees
 WHERE last_name LIKE '%g';
+
 27). Odczytaj osoby o nazwiskach zawierajacych "in".
+
 SELECT first_name, last_name FROM employees
 WHERE last_name LIKE '%in%';
+
 28). Odczytaj osoby oimionach kobiet (koñcza sie na litere "a").
+
 SELECT first_name, last_name FROM employees
 WHERE first_name LIKE '%a';
+
 29). Odczytaj imiona meskie.
+
 SELECT first_name, last_name FROM employees
 WHERE first_name NOT LIKE '%a';
+
 30). Odczytaj nazwy krajow o wieloczlonowej nazwie (np. United Kingdom).
+
 SELECT country_name FROM countries
 WHERE country_name LIKE '% %';
+
 31). Odczytaj 10*2+5.
 SELECT 10*2+5 FROM dual;
 32). Odczytaj liczbe wszystkich pracownikow.
