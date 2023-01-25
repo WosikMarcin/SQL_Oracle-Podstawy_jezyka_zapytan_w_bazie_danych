@@ -242,27 +242,47 @@ SELECT country_name FROM countries
 WHERE country_name LIKE '% %';
 
 31). Odczytaj 10*2+5.
+
 SELECT 10*2+5 FROM dual;
+
 32). Odczytaj liczbe wszystkich pracownikow.
-SELECT count(*) FROM employees;
+
+SELECT COUNT(*) FROM employees;
+
 33). Odczytaj liczbe wszystkich krajow.
-SELECT count(*) FROM countries; 
+
+SELECT COUNT(*) FROM countries; 
+
 34). Odczytaj liczbe osob o imieniach kobiet.
-SELECT count(*) FROM employees
+
+SELECT COUNT(*) FROM employees
 WHERE first_name LIKE '%a';
-35). Odczytaj liczbe wszystkich pracownikow, employee_id, manager_id, commision_pct. 
-SELECT COUNT(*),COUNT(employee_id),COUNT(manager_id),COUNT(commission_pct) FROM employees; 
+
+35). Odczytaj liczbe wszystkich pracownikow, employee_id, manager_id, commision_pct.
+
+SELECT COUNT(*), COUNT(employee_id), COUNT(manager_id), COUNT(commission_pct) FROM employees; 
+
 36). Odczytaj job_id bez powtarzania (unikatowe dane).
+
 SELECT DISTINCT(job_id) FROM employees;
+
 37). Odczytaj last_name, commission_pct, zastap (null)-"0";
-SELECT last_name,commission_pct,NVL(commission_pct,0) FROM employees;
+
+SELECT last_name, commission_pct, NVL(commission_pct,0) FROM employees;
+
 38). Odczytaj srednia(pomijajac NULL za pomoca ulamka, srednia uwzgledniajac NULL
 zastapione przez zero) dla commission_pct.
-SELECT (SUM(commission_pct))/,(SUM(NVL(commission_pct,0)))/COUNT(*) FROM employees; 
+
+SELECT SUM(commission_pct)/COUNT(commission_pct), (SUM(NVL(commission_pct,0)))/COUNT(NVL(commission_pct,0)) FROM employees;
+
 39). Odczytaj nazwisko pierwsze wg alfabetu i ostatnie wg alfabetu.
-SELECT MIN(last_name),MAX(last_name) FROM employees;
+
+SELECT MIN(last_name), MAX(last_name) FROM employees;
+
 40). Odczytaj tylko osobe najkrocej zatrudniona i najdluzej zatrudniona.
-SELECT MIN(hire_date),MAX(hire_date) FROM employees;
+
+SELECT MAX(hire_date), MIN(hire_date) FROM employees;
+
 41). Odczytaj minimalna i maksymalna wyplate dla wszystkich osob.
 SELECT MIN(salary),MAX(salary) FROM employees;
 42). Odczytaj minimalna i maksymalna wyplate dla tych, ktorzy maja okreslone commission_pct.
