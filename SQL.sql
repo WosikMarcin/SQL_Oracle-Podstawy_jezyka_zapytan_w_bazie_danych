@@ -284,49 +284,73 @@ SELECT MIN(last_name), MAX(last_name) FROM employees;
 SELECT MAX(hire_date), MIN(hire_date) FROM employees;
 
 41). Odczytaj minimalna i maksymalna wyplate dla wszystkich osob.
+
 SELECT MIN(salary),MAX(salary) FROM employees;
+
 42). Odczytaj minimalna i maksymalna wyplate dla tych, ktorzy maja okreslone commission_pct.
-SELECT MIN(salary),MAX(salary) FROM employees
+
+SELECT MIN(salary), MAX(salary) FROM employees
 WHERE commission_pct IS NOT NULL;
-43). Odczytaj srednia pensje dla osob pracujacych na stanowisku IT_PROG. 
+
+43). Odczytaj srednia pensje dla osob pracujacych na stanowisku IT_PROG.
+
 SELECT AVG(salary) FROM employees
 WHERE job_id = 'IT_PROG'; 
+
 44). Sprawdz kogo jest wiecej i kto srednio lepiej zarabia kobiety czy mezczyzni.
-SELECT 'Kobiety' AS Plec,count(first_name),AVG(salary) FROM employees
+
+SELECT 'Kobiety' AS Plec, COUNT(first_name), AVG(salary) FROM employees
 WHERE first_name LIKE '%a'
 UNION ALL
-SELECT 'Mezczyzni' AS Plec,count(first_name),AVG(salary) FROM employees
+SELECT 'Mezczyzni' AS Plec, COUNT(first_name), AVG(salary) FROM employees
 WHERE first_name NOT LIKE '%a';
+
 45). Nadaj alias praca dla tabeli employees, wyswietl pracownikow, ktorzy maja wynagrodzenie 
 wieksze niz 10000, posortuj malejaco.
-SELECT first_name,last_name,salary FROM employees praca
+
+SELECT first_name, last_name, salary FROM employees praca
 WHERE salary > 10000
 ORDER BY salary DESC;
+
+SELECT praca.first_name, praca.last_name, praca.salary FROM employees praca
+WHERE salary > 10000
+ORDER BY salary DESC;
+
 46). Odczytaj 5 najlepiej zarabijacyh osob.
+
 SELECT first_name, last_name, salary FROM employees
 ORDER BY salary DESC;
 
 SELECT first_name, last_name, salary FROM (SELECT * FROM employees ORDER BY salary DESC)
 WHERE ROWNUM <= 5;
+
 47). Odczytaj liczbe pracownikow na kazdym stanowisku.
-SELECT DISTINCT(job_id), COUNT(job_id) FROM employees
+
+SELECT job_id, COUNT(job_id) FROM employees
 GROUP BY job_id;
+
 48). Odczytaj ile osob jest w podziale na stanowisko i dzial.
-SELECT department_id,COUNT(department_id),job_id,COUNT(job_id) FROM employees
-GROUP BY job_id,department_id
-ORDER BY department_id,job_id;
+
+SELECT department_id, COUNT(department_id), job_id, COUNT(job_id) FROM employees
+GROUP BY job_id, department_id
+ORDER BY department_id, job_id;
+
 49). Odczytaj osoby na kazdym stanowisku, tylko te stanowiska gdzie pracuje mniej niz 3 osoby.
+
 SELECT job_id FROM employees
 GROUP BY job_id
 HAVING COUNT(job_id) < 3;
+
 50).Wyświetl na jakim stanowisku najbardziej opłaca sie pracować pod względem zarobków
 (gdzie średnio zarabia się nawięcej)
-SELECT job_id, AVG(salary) srednia FROM employees
+
+SELECT job_id, AVG(salary) FROM employees
 GROUP BY job_id
-ORDER BY srednia DESC;
+ORDER BY AVG(salary) DESC;
 
 SELECT * FROM (SELECT job_id, AVG(salary) FROM employees GROUP BY job_id ORDER BY AVG(salary) DESC)
 WHERE ROWNUM = 1;
+
 51).Wyświetl na jakim stanowisku jest najwięcej osób zarabiających powyżej 8 tys.
 SELECT job_id, COUNT(job_id) ilosc FROM employees
 WHERE salary > 8000
