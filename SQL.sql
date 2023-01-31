@@ -329,7 +329,7 @@ WHERE ROWNUM <= 5;
 SELECT job_id, COUNT(job_id) FROM employees
 GROUP BY job_id;
 
-48). Odczytaj ile osob jest w podziale na stanowisko i dzial.
+48). Odczytaj ile osob jest w podziale na stanowisko i dzial, posortuj po department_id malejaca, job_id malejaca.
 
 SELECT department_id, COUNT(department_id), job_id, COUNT(job_id) FROM employees
 GROUP BY job_id, department_id
@@ -348,7 +348,10 @@ SELECT job_id, AVG(salary) FROM employees
 GROUP BY job_id
 ORDER BY AVG(salary) DESC;
 
-SELECT * FROM (SELECT job_id, AVG(salary) FROM employees GROUP BY job_id ORDER BY AVG(salary) DESC)
+SELECT job_id, SREDNIE_WYNAGRODZENIE FROM (SELECT job_id, AVG(salary) AS "SREDNIE_WYNAGRODZENIE" FROM employees GROUP BY job_id ORDER BY AVG(salary) DESC)
+WHERE ROWNUM = 1;
+
+SELECT job_id, "SREDNIE WYNAGRODZENIE" FROM (SELECT job_id, AVG(salary) AS "SREDNIE WYNAGRODZENIE" FROM employees GROUP BY job_id ORDER BY AVG(salary) DESC)
 WHERE ROWNUM = 1;
 
 51).Wyświetl na jakim stanowisku jest najwięcej osób zarabiających powyżej 8 tys.
