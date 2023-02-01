@@ -355,31 +355,48 @@ SELECT job_id, "SREDNIE WYNAGRODZENIE" FROM (SELECT job_id, AVG(salary) AS "SRED
 WHERE ROWNUM = 1;
 
 51).Wyświetl na jakim stanowisku jest najwięcej osób zarabiających powyżej 8 tys.
-SELECT job_id, COUNT(job_id) ilosc FROM employees
+
+SELECT job_id, COUNT(job_id) AS ilosc FROM employees
 WHERE salary > 8000
 GROUP BY job_id
 ORDER BY ilosc DESC;
 
-SELECT * FROM
-(SELECT COUNT(job_id), job_id FROM employees WHERE salary > 8000 GROUP BY job_id ORDER BY COUNT(job_id) DESC) 
+SELECT job_id, ilosc FROM (SELECT job_id, COUNT(job_id) AS ilosc FROM employees WHERE salary > 8000 GROUP BY job_id ORDER BY ilosc DESC) 
 WHERE ROWNUM = 1;
+
 52).Wyświetl różnicę pomiędzy maksymalną a minimalną wypłata dla każdego stanowsika. 
 Na jakim jest nawyższa ?   
-SELECT job_id, MAX(salary), MIN(salary), MAX(salary) - MIN(salary) roznica FROM employees
+
+SELECT job_id, MAX(salary), MIN(salary), MAX(salary) - MIN(salary) AS roznica FROM employees
 GROUP BY job_id
 ORDER BY roznica DESC;
 
+SELECT job_id, MAX(salary), MIN(salary), MAX(salary)-MIN(salary) AS roznica FROM employees
+GROUP BY job_id
+ORDER BY 2 DESC;
+
+SELECT job_id, MAX(salary), MIN(salary), MAX(salary)-MIN(salary) AS "roznica" FROM employees
+GROUP BY job_id
+ORDER BY "roznica" DESC;
+
 SELECT * FROM (SELECT job_id, MAX(salary), MIN(salary), MAX(salary)-MIN(salary) AS roznica FROM employees GROUP BY job_id ORDER BY roznica DESC)
 WHERE ROWNUM = 1;
+
 53).Wyświetl liczbe wszystkich pracownikow, liczbe department_id, liczbe department_id bez powtarzania się (unikatowe dane)
+
 SELECT COUNT(*), COUNT(department_id), COUNT(DISTINCT(department_id)) FROM employees;
-54). Połacz tabele employees i departments (bez uzycia JOIN). 
+
+54). Połacz tabele employees i departments (bez uzycia JOIN).
+
 SELECT * FROM employees, departments
 WHERE employees.department_id = departments.department_id;
+
 55). Połacz tabele employees i departments (bez uzycia JOIN), nadaj alias dla employees "e"
 dla departments "d".
+
 SELECT * FROM employees e, departments d
 WHERE e.department_id = d.department_id;
+
 56). Polacz tabele employees i departments z uzyciem JOIN, nadaj alias "e" dla employees,
 "d" dla departments.
 SELECT * FROM employees e JOIN departments d
