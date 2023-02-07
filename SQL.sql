@@ -454,7 +454,7 @@ SELECT first_name, last_name, salary FROM employees
 WHERE salary = (SELECT MIN(salary) FROM employees);
 72). Wyswietl nazwisko, pensje i maksymalna pensje dla wszystkich pracownikow. 
 SELECT last_name, salary, (SELECT MAX(salary) FROM employees) FROM employees;
-73). Wyswietl pensje netto, pensje brutto. Uzyj podzapytania w sekcji FROM.
+73). Wyswietl pensje netto, pensje brutto.
 SELECT salary AS "pensja netto", (salary * 1.2) AS "pensja brutto" FROM employees;
 74). Wyswietl osobę zarabiajaca najwiecej. 
 SELECT first_name, last_name FROM employees
