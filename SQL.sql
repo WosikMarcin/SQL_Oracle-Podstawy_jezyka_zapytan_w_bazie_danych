@@ -535,44 +535,71 @@ SELECT first_name, salary, (SELECT MAX(salary) FROM employees) FROM employees;
 SELECT first_name, salary, job_title, (SELECT MAX(salary) FROM employees) FROM employees e
 JOIN jobs j ON e.job_id = j.job_id;
 91). Liczbę 12345.6789
-- zaokraglij (zero miejsc po przecinku)
-- zaokraglij do dwoch miejsc po przecinku
-- zaokraglij do dwoch miejsc przed przecinkiem
-- utnij liczby po przecinku, wyswietl tylko liczbe do przecinka
-- utnij do dwoch miejsc po przecinku
-- utnij do dwoch miejsc przed przecinkiem
-- zaokraglij w gore
-- zaokraglij w dol
+a). zaokraglij (zero miejsc po przecinku)
+b). zaokraglij do dwoch miejsc po przecinku
+c). zaokraglij do dwoch miejsc przed przecinkiem
+d). utnij liczby po przecinku, wyswietl tylko liczbe do przecinka
+e). utnij do dwoch miejsc po przecinku
+f). utnij do dwoch miejsc przed przecinkiem
+g). zaokraglij w gore
+h). zaokraglij w dol
 
-SELECT 12345.6789, ROUND(12345.6789), ROUND(12345.6789,2), ROUND(12345.6789,-2),
-TRUNC(12345.6789), TRUNC(12345.6789,2), TRUNC(12345.6789,-2), CEIL(12345.6789), FLOOR(12345.6789) FROM DUAL;
+a). SELECT ROUND(12345.6789) FROM DUAL;
+    SELECT ROUND(12345.6789,0) FROM DUAL;
+b). SELECT ROUND(12345.6789,2) FROM DUAL;
+c). SELECT ROUND(12345.6789,-2) FROM DUAL;
+d). SELECT TRUNC(12345.6789) FROM DUAL; 
+    SELECT TRUNC(12345.6789,0) FROM DUAL; 
+e). SELECT TRUNC(12345.6789,2) FROM DUAL;
+f). SELECT TRUNC(12345.6789,-2) FROM DUAL;
+g). SELECT CEIL(12345.6789) FROM DUAL;
+h). SELECT FLOOR(12345.6789) FROM DUAL;
+
 92). Wyswietl min, max i srednia pensje dla wszystkich praconikow - zaokraglij do dwoch miejsc po przecinku.
+
 SELECT MIN(salary), MAX(salary), ROUND(AVG(salary),2) FROM employees;
+
 93).Wyswietl "ala ma kota" z wszystkich duzych liter, z wszystkich malych, pierwsza litera slowa wielka a reszta mała.
-SELECT UPPER('ala ma kota'), LOWER('ala ma kota'),INITCAP('ala ma kota') FROM DUAL;
+
+SELECT UPPER('ala ma kota'), LOWER('ala ma kota'), INITCAP('ala ma kota') FROM DUAL;
 
 SELECT UPPER(k1), LOWER(k1), INITCAP(k1) FROM (SELECT ('ala ma kota') AS k1 FROM DUAL); 
+
 94).Wyswietl osoby o nazwisku King, wszystkie małe litery.
+
 SELECT first_name, LOWER(last_name) FROM employees
 WHERE last_name = 'King';
+
 95). Wyswietl osoby o nazwisku King, wszystkie duże litery.
+
 SELECT first_name, UPPER(last_name) FROM employees
 WHERE last_name = 'King';
+
 96). Dla wyrazenia ' ala ma kota ' usun białe znaki z obu stron, z lewej strony, z prawej strony.
+
 SELECT ' ala ma kota ', TRIM(' ala ma kota '), LTRIM(' ala ma kota '), RTRIM( ' ala ma kota ') FROM DUAL;
 
 SELECT k1, TRIM(k1), LTRIM(k1), RTRIM(k1) FROM (SELECT ' ala ma kota ' AS k1 FROM DUAL);
+
 97). Wyswietl napis w formacie job_title (min salary :max salary).
-SELECT job_title||'('||min_salary||':'||max_salary||')' FROM jobs;
+
+SELECT job_title|| ' ( ' || min_salary || ' : ' || max_salary || ' ) ' FROM jobs;
+
 98). Wyswietl napisz w formacie job_title : last_name, np.President : King
-SELECT job_title||' : '||last_name FROM employees e JOIN jobs j
-ON e.job_id = j.job_id;
+
+SELECT job_title || ' : ' || last_name FROM employees e 
+JOIN jobs j ON e.job_id = j.job_id;
+
 99). Z napisu "Ala ma kota" wytnij "kot". (zaczynajac od poczatku i od konca).
+
 SELECT SUBSTR('ala ma kota',8,3), SUBSTR('ala ma kota',-4,3) FROM DUAL;
 
 SELECT SUBSTR(k1,8,3), SUBSTR(k1,-4,3) FROM (SELECT 'ala ma kota' AS k1 FROM DUAL);
+
 100). Wyswietl imie, nazwisko i inicjaly w formacie P.S.
-SELECT first_name, last_name, SUBSTR(first_name,1,1)||'.'||SUBSTR(last_name,1,1)||'.' as inicjaly FROM employees;
+
+SELECT first_name, last_name, SUBSTR(first_name,1,1) || '.' || SUBSTR(last_name,1,1) || '.' as inicjaly FROM employees;
+
 101).Wyswietl first_name, dlugosc first_name i pozycje "a" w first_name.
 SELECT first_name, LENGTH(first_name), INSTR(first_name,'a') FROM employees;
 102). Utworz widok "pracownicy". Polacz first_name z last_name i nadaj alias pracownik.
