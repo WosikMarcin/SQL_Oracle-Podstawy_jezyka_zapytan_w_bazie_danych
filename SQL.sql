@@ -607,9 +607,10 @@ SELECT first_name, LENGTH(first_name), INSTR(first_name,'a') FROM employees;
 102). Utworz widok "pracownicy". Polacz first_name z last_name i nadaj alias pracownik.
 Wyswietl dane w formacie pracownik, miejsce spacji, imie, nazwisko.
 
-CREATE VIEW pracownicy AS SELECT first_name||' '||last_name AS pracownik FROM employees;
-SELECT pracownik, INSTR(pracownik,' ') AS "Miejsce spacji", SUBSTR(pracownik,1,INSTR(pracownik,' ')-1) AS imie, 
-SUBSTR(pracownik,INSTR(pracownik,' ')+1,LENGTH(pracownik)) AS nazwisko FROM pracownicy;
+CREATE VIEW pracownicy AS SELECT first_name || ' ' || last_name AS pracownik FROM employees;
+
+SELECT pracownik, INSTR(pracownik,' ') AS Miejsce_spacji, SUBSTR(pracownik,1,INSTR(pracownik,' ')-1) AS imie, 
+SUBSTR(pracownik,INSTR(pracownik,' ')+1) AS Nazwisko FROM pracownicy;
 
 103). W "Ala ma Kota" zamień: "Ala" na "Tomek", "Kot" na "Ps", "a" na "*".
 
