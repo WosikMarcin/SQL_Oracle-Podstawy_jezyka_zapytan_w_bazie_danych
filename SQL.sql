@@ -658,7 +658,7 @@ SELECT 'Hello World' FROM DUAL;
 115). Odczytaj wszystkie kolumny z employees, posortuj malejąco po salary, uzyj numeru kolumny zamiast jej nazwy przy sortowaniu.
 
 SELECT * FROM employees
-ORDER BY 8;
+ORDER BY 8 DESC;
 
 
 
